@@ -15,6 +15,8 @@ public class KafkaConfiguration {
 
     @Value(value = "${kafka.server}")
     private String serverAddress;
+    @Value(value = "${kafka.topic}")
+    private String topic;
 
     @Bean
     public KafkaAdmin kafkaAdmin() {
@@ -26,6 +28,6 @@ public class KafkaConfiguration {
 
     @Bean
     public NewTopic topic1() {
-        return new NewTopic("topic1", 1, (short) 1);
+        return new NewTopic(topic, 1, (short) 1);
     }
 }
